@@ -37,15 +37,13 @@ const deepDiveLinkElement = (
   return (
     <div className=" text-l max-w-3xl font-light leading-relaxed">
       <p>
-        Welcome!<br />
-        My name is Quang-Phuc Phung. I am a PhD student in Economics at Tilburg University.
-        I expect to graduate in Spring 2025 and will be on the job market in the 2024-2025 academic year.<br />
-        I work on behavioral economics and experimental economics. My recent work focuses on using the tools of
-        experimental economics to study human-AI interaction.
-        You can find my {cvLinkElement} here.
-        You can find my {jmpLinkElement} here.
-        You can also find here a relaxing, brain-teasing {deepDiveLinkElement} summarizing my job market paper,
-        courtesy of NotebookLM.<br/>
+      Welcome!<br />
+      My name is Quang-Phuc Phung. I am a PhD student in Economics at Tilburg University.
+      I expect to graduate in Spring 2025 and will be on the job market in the 2024-2025 academic year.<br /><br/>
+      I work on behavioral economics and experimental economics. My recent work focuses on using the tools of
+      experimental economics to study human-AI interaction.
+      You can find more details by checking out my {cvLinkElement}, exploring my {jmpLinkElement}, or listen to a
+      a relaxing and brain-teasing summary of my job market paper, courtesy of NotebookLM, in this {deepDiveLinkElement}.<br/>
       </p>
     </div>
   );
