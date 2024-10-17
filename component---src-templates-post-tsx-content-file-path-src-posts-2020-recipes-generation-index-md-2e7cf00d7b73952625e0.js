@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunktrekhleb_github_io=self.webpackChunktrekhleb_github_io||[]).push([[8677],{2280:function(e,t,n){n.r(t),n.d(t,{default:function(){return i}});var r=n(6998),u=n(6540),c=n(9713);const a=e=>{const{data:t,children:n}=e;return u.createElement(c.A,{post:t},n)};function i(e){return u.createElement(a,e,u.createElement(r.A,e))}}}]);
-//# sourceMappingURL=component---src-templates-post-tsx-content-file-path-src-posts-2020-recipes-generation-index-md-2e7cf00d7b73952625e0.js.map
