@@ -17,6 +17,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "validate": "npm run type && npm run lint",
+    "security": "npm audit --audit-level=high",
     "pipeline": "node ./scripts/site-pipeline.mjs",
     "deploy": "node ./scripts/site-pipeline.mjs --deploy"
   },
@@ -64,14 +65,26 @@
   "devDependencies": {
     "@types/gatsbyjs__reach-router": "^2.0.0",
     "@types/node": "^20.2.4",
+    "@types/node-fetch": "^2.6.13",
     "@types/react": "^18.2.7",
     "@types/react-dom": "^18.2.4",
     "@types/react-helmet": "^6.1.6",
     "gh-pages": "^6.2.0",
     "typescript": "^5.0.4"
   },
+  "overrides": {
+    "cookie": "0.7.2",
+    "immutable": "5.1.9",
+    "lodash": "4.18.1",
+    "path-to-regexp": "0.1.13",
+    "serialize-javascript": "7.1.1",
+    "sharp": "0.35.4",
+    "tmp": "0.2.7",
+    "uuid": "11.1.1",
+    "webpack": "5.111.0"
+  },
   "engines": {
-    "node": ">=18.15.0",
-    "npm": ">=9.5.0"
+    "node": ">=22.0.0 <26",
+    "npm": ">=10.0.0 <11"
   }
 }

@@ -31,11 +31,14 @@ From the pipeline directory:
 cd /Users/luftballon/Desktop/prj/quangphucphung.github.io-pipeline
 
 # Use the supported Gatsby runtime on this Mac mini.
-export PATH="/opt/homebrew/opt/node@18/bin:$PATH"
-node --version  # v18.20.8
+export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
+node --version  # v22.23.2
 
 # Install the locked dependency graph in a fresh checkout.
 npm ci
+
+# Audit the complete dependency tree; high and critical findings fail.
+npm run security
 
 # Validate and build without publishing.
 npm run pipeline
@@ -80,9 +83,13 @@ GitHub Pages -> quangphucphung.com
 
 `public/` is generated output and remains ignored by the source repository. `temp-public/` is no longer part of the normal workflow.
 
+## Dependency policy
+
+The lockfile is refreshed with non-breaking updates and installed with `npm ci`. The package manifest pins known vulnerable transitive build dependencies through `overrides` while retaining Gatsby 5 compatibility. `npm run security` audits the complete dependency tree and fails on high or critical advisories. The current audit has no high or critical findings; moderate findings remain in Gatsby's older transitive development/build tooling. `npm audit fix --force` was not used because npm proposes breaking Gatsby downgrades rather than a tested upgrade path.
+
 ## GitHub Actions
 
-`.github/workflows/CI.yml` now validates pushes and pull requests to `main` with the pinned `.nvmrc` Node version, `npm ci`, type checking, linting, and a production build. It does not deploy automatically. Publishing remains an explicit local command so a source edit cannot silently change the public site.
+`.github/workflows/CI.yml` now validates pushes and pull requests to `main` with the pinned `.nvmrc` Node version, `npm ci`, a full dependency audit, type checking, linting, and a production build. The audit blocks high and critical advisories. It does not deploy automatically. Publishing remains an explicit local command so a source edit cannot silently change the public site.
 
 ## Current boundary
 

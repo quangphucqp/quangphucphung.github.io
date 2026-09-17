@@ -8,10 +8,37 @@ import { fileURLToPath } from 'node:url';
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const repository = 'quangphucqp/quangphucphung.github.io';
 const siteDomain = 'quangphucphung.com';
-const node18Bin = '/opt/homebrew/opt/node@18/bin';
-const childEnvironment = existsSync(join(node18Bin, 'node'))
-  ? { ...process.env, PATH: `${node18Bin}:${process.env.PATH ?? ''}` }
-  : process.env;
+const requiredNodeVersion = readFileSync(join(projectRoot, '.nvmrc'), 'utf8').trim();
+const requiredNodeMajor = Number(requiredNodeVersion.replace(/^v/, '').split('.')[0]);
+if (!Number.isInteger(requiredNodeMajor)) {
+  throw new Error(`Invalid .nvmrc value: ${requiredNodeVersion}`);
+}
+
+const nodeBinCandidates = [
+  `/opt/homebrew/opt/node@${requiredNodeMajor}/bin`,
+  `/usr/local/opt/node@${requiredNodeMajor}/bin`,
+];
+const nodeBin = nodeBinCandidates.find((candidate) => existsSync(join(candidate, 'node')));
+if (!nodeBin) {
+  throw new Error(`Node ${requiredNodeMajor} is required. Install it with Homebrew before running the website pipeline.`);
+}
+
+const runtimeNode = join(nodeBin, 'node');
+const childEnvironment = { ...process.env, PATH: `${nodeBin}:${process.env.PATH ?? ''}` };
+const currentNodeMajor = Number(process.versions.node.split('.')[0]);
+if (currentNodeMajor !== requiredNodeMajor) {
+  try {
+    execFileSync(runtimeNode, [fileURLToPath(import.meta.url), ...process.argv.slice(2)], {
+      cwd: projectRoot,
+      env: childEnvironment,
+      stdio: 'inherit',
+    });
+  } catch (error) {
+    process.exit(error.status ?? 1);
+  }
+  process.exit(0);
+}
+
 const deployRequested = process.argv.slice(2).includes('--deploy');
 const allowedArguments = deployRequested ? ['--deploy'] : [];
 
@@ -128,6 +155,10 @@ console.log(`Using Node runtime for npm commands: ${runCaptured('node', ['--vers
 assertSourceCheckout();
 
 console.log('Running source checks...');
+if (deployRequested) {
+  console.log('Auditing dependencies before deployment...');
+  run('npm', ['run', 'security']);
+}
 run('npm', ['run', 'validate']);
 console.log('Building the Gatsby site...');
 run('npm', ['run', 'build']);
