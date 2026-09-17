@@ -1,10 +1,14 @@
 {
-  "name": "trekhleb.github.io",
-  "version": "3.0.0",
-  "private": false,
-  "author": "Oleksii Trekhleb",
-  "homepage": "https://trekhleb.dev",
-  "license": "0BSD",
+  "name": "quangphucphung.com",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Quang Phuc Phung",
+  "homepage": "https://quangphucphung.com",
+  "license": "UNLICENSED",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quangphucqp/quangphucphung.github.io.git"
+  },
   "scripts": {
     "fetch-stars": "node ./src/scripts/fetchGitHubStars.js",
     "lint": "eslint 'src/**/*.{js,ts,tsx}'",

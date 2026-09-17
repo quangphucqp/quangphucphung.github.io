@@ -146,8 +146,28 @@ const verifyRemoteDeployment = () => {
     throw new Error(`GitHub Pages reports an unexpected CNAME: ${pages.cname}`);
   }
 
+  const expectedIndexSha = runCaptured('git', ['hash-object', join('public', 'index.html')]);
+  const expectedCnameSha = runCaptured('git', ['hash-object', join('public', 'CNAME')]);
+  const remoteIndexSha = runCaptured('gh', [
+    'api',
+    `repos/${repository}/contents/index.html?ref=public`,
+    '--jq',
+    '.sha',
+  ]);
+  const remoteCnameSha = runCaptured('gh', [
+    'api',
+    `repos/${repository}/contents/CNAME?ref=public`,
+    '--jq',
+    '.sha',
+  ]);
+
+  if (remoteIndexSha !== expectedIndexSha || remoteCnameSha !== expectedCnameSha) {
+    throw new Error('Remote public branch does not match the verified local build artifacts.');
+  }
+
   console.log(`Verified remote public branch: ${branchSha}`);
   console.log(`Verified GitHub Pages target: ${pages.source.branch}:${pages.source.path} (${pages.status}).`);
+  console.log('Verified remote index.html and CNAME blobs against the local build.');
 };
 
 process.chdir(projectRoot);
