@@ -50,9 +50,11 @@ npm run serve
 npm run deploy
 ```
 
-`npm run pipeline` runs the type checker and linter, builds the Gatsby site from the committed data snapshot, and verifies the compiled artifact. It does not publish anything or call the GitHub API for star updates.
+`npm run pipeline` runs the type checker and linter, removes the previous Gatsby cache/output, builds the Gatsby site from the committed data snapshot, and verifies the compiled artifact. It does not publish anything or call the GitHub API for star updates.
 
-`npm run fetch-stars` is an explicit data-refresh command. It updates the committed star snapshot only when the star counts change. It is not part of the normal build, so a normal build remains network-independent and does not dirty the source checkout.
+The website now stores the CV in `static/CV.pdf` and links to `/CV.pdf`. The research page links only to the SSRN paper; the unused Dropbox and OneDrive links were removed from the active data file.
+
+`npm run fetch-stars` remains an explicit data-refresh command. It updates the committed star snapshot only when the star counts change. It is not part of the normal build, so the normal build remains network-independent and does not dirty the source checkout.
 
 `npm run deploy` runs the same checks and build, verifies `public/index.html`, `public/404.html`, `public/CNAME`, `public/CV.pdf`, and Gatsby page data, then publishes `public/` to the `public` branch with `gh-pages`. It refuses to run unless:
 

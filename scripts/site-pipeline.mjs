@@ -188,6 +188,8 @@ if (deployRequested) {
   run('npm', ['run', 'security']);
 }
 run('npm', ['run', 'validate']);
+console.log('Cleaning previous Gatsby build artifacts...');
+run('npm', ['run', 'clean']);
 console.log('Building the Gatsby site...');
 run('npm', ['run', 'build']);
 assertBuildOutput();
