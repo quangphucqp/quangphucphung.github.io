@@ -93,6 +93,7 @@ const assertBuildOutput = () => {
     'index.html',
     '404.html',
     'CNAME',
+    'CV.pdf',
     'page-data/index/page-data.json',
   ];
 
@@ -148,6 +149,7 @@ const verifyRemoteDeployment = () => {
 
   const expectedIndexSha = runCaptured('git', ['hash-object', join('public', 'index.html')]);
   const expectedCnameSha = runCaptured('git', ['hash-object', join('public', 'CNAME')]);
+  const expectedCvSha = runCaptured('git', ['hash-object', join('public', 'CV.pdf')]);
   const remoteIndexSha = runCaptured('gh', [
     'api',
     `repos/${repository}/contents/index.html?ref=public`,
@@ -160,14 +162,20 @@ const verifyRemoteDeployment = () => {
     '--jq',
     '.sha',
   ]);
+  const remoteCvSha = runCaptured('gh', [
+    'api',
+    `repos/${repository}/contents/CV.pdf?ref=public`,
+    '--jq',
+    '.sha',
+  ]);
 
-  if (remoteIndexSha !== expectedIndexSha || remoteCnameSha !== expectedCnameSha) {
+  if (remoteIndexSha !== expectedIndexSha || remoteCnameSha !== expectedCnameSha || remoteCvSha !== expectedCvSha) {
     throw new Error('Remote public branch does not match the verified local build artifacts.');
   }
 
   console.log(`Verified remote public branch: ${branchSha}`);
   console.log(`Verified GitHub Pages target: ${pages.source.branch}:${pages.source.path} (${pages.status}).`);
-  console.log('Verified remote index.html and CNAME blobs against the local build.');
+  console.log('Verified remote index.html, CNAME, and CV.pdf blobs against the local build.');
 };
 
 process.chdir(projectRoot);

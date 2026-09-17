@@ -54,7 +54,7 @@ npm run deploy
 
 `npm run fetch-stars` is an explicit data-refresh command. It updates the committed star snapshot only when the star counts change. It is not part of the normal build, so a normal build remains network-independent and does not dirty the source checkout.
 
-`npm run deploy` runs the same checks and build, verifies `public/index.html`, `public/404.html`, `public/CNAME`, and Gatsby page data, then publishes `public/` to the `public` branch with `gh-pages`. It refuses to run unless:
+`npm run deploy` runs the same checks and build, verifies `public/index.html`, `public/404.html`, `public/CNAME`, `public/CV.pdf`, and Gatsby page data, then publishes `public/` to the `public` branch with `gh-pages`. It refuses to run unless:
 
 - the checkout is on `main`;
 - the working tree is clean;
@@ -62,7 +62,7 @@ npm run deploy
 - the build contains the expected domain and HTML files;
 - the output does not contain an accidental nested `public/public/` directory.
 
-After publishing, the script reads the remote `public` branch and GitHub Pages configuration back through `gh` and checks that Pages still serves `public:/` with `quangphucphung.com`.
+After publishing, the script reads the remote `public` branch and GitHub Pages configuration back through `gh`, checks that Pages still serves `public:/` with `quangphucphung.com`, and verifies the remote `index.html`, `CNAME`, and `CV.pdf` blobs against the local build.
 
 ## Deployment topology
 
