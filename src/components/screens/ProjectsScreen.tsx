@@ -93,11 +93,11 @@ const ProjectsScreen = (props: ProjectsScreenProps): React.ReactElement => {
   return (
     <PageLayout>
       <SEO
-        title="Projects"
-        description="Projects and experiments that help people learn"
+        title="Research"
+        description="Research and experiments that help people learn"
       />
       <Row>
-        <PageHeader>Projects</PageHeader>
+        <PageHeader>Research</PageHeader>
         <Badge className="ml-3 self-start">{projectsNum}</Badge>
       </Row>
       <Row className="mb-6 justify-between">

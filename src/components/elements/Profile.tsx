@@ -1,5 +1,4 @@
 import React from 'react';
-import { FiBriefcase } from '@react-icons/all-files/fi/FiBriefcase';
 
 import type { Profile as ProfileType } from '../../types/Profile';
 import Avatar from '../shared/Avatar';
@@ -37,7 +36,6 @@ const Profile = (props: ProfileProps): React.ReactElement => {
 
   const positionElement = profile?.position ? (
     <div className="mb-3 font-light text-gray-500 flex flex-row items-center">
-      <FiBriefcase className="mr-1 w-4 h-4" />
       {profile.position}
     </div>
   ) : null;

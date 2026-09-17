@@ -1,5 +1,5 @@
 ---
-title: "Top 33 JavaScript Projects on GitHub (August 2018)"
+title: "Top 33 JavaScript Research on GitHub (August 2018)"
 
 summary: "Top of JavaScript projects as for 2018"
 

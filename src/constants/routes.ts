@@ -16,11 +16,11 @@ export const routes: Routes = {
     name: 'About',
   },
   projects: {
-    path: '/projects',
+    path: '/research',
     name: 'Research',
   },
   blog: {
-    path: '/blog',
+    path: '/teaching',
     name: 'Teaching',
   },
 };

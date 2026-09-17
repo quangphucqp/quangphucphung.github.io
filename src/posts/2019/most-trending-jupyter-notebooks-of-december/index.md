@@ -55,7 +55,7 @@ _★ 574_ _per month_
 
 ### #9 [udacity / deep-learning-v2-pytorch](https://github.com/udacity/deep-learning-v2-pytorch)
 
-Projects and exercises for the latest Deep Learning ND program.
+Research and exercises for the latest Deep Learning ND program.
 _★ 322_ _per month_
 
 ### #10 [jakevdp / PythonDataScienceHandbook](https://github.com/jakevdp/PythonDataScienceHandbook)

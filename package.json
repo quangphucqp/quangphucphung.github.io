@@ -17,8 +17,9 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages --dist ./public --branch public"
+    "validate": "npm run type && npm run lint",
+    "pipeline": "node ./scripts/site-pipeline.mjs",
+    "deploy": "node ./scripts/site-pipeline.mjs --deploy"
   },
   "dependencies": {
     "@gatsbyjs/reach-router": "^2.0.1",
@@ -37,7 +38,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "gatsby": "^5.10.0",
     "gatsby-plugin-feed": "^5.10.0",
-    "gatsby-plugin-google-gtag": "^5.10.0",
+    "gatsby-plugin-google-gtag": "^5.14.0",
     "gatsby-plugin-image": "^3.10.0",
     "gatsby-plugin-mdx": "^5.10.0",
     "gatsby-plugin-postcss": "^6.10.0",

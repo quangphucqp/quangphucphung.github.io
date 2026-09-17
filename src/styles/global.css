@@ -13,6 +13,11 @@ Adding base styles
   /*}*/
 }
 
+/* Ensure consistent scrollbar behavior across pages */
+html {
+  overflow-y: scroll;
+}
+
 @tailwind components;
 @tailwind utilities;
 

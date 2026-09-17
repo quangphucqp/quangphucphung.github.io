@@ -1,5 +1,5 @@
 ---
-title: "Docker Whale in Digital Ocean or Automated Continuous Delivery Flow For Simple Projects"
+title: "Docker Whale in Digital Ocean or Automated Continuous Delivery Flow For Simple Research"
 
 summary: "The main idea is to automate project’s code and environment deployment to production and to make this process to be smooth and easy"
 

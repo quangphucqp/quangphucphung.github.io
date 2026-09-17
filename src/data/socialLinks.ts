@@ -2,7 +2,6 @@
 import { socialLinkTypes } from '../types/SocialLink';
 import type { SocialLink } from '../types/SocialLink';
 
-
 export const socialLinks: SocialLink[] = [
   {
     type: socialLinkTypes.linkedIn,
@@ -24,8 +23,8 @@ export const socialLinks: SocialLink[] = [
   },
   {
     type: socialLinkTypes.email,
-    url: 'mailto:q.p.phung@tilburguniversity.edu',
+    url: 'mailto:quangphucphung@pm.me',
     secondary: false,
-    caption: 'Work email',
-  }
+    caption: 'Email',
+  },
 ];
