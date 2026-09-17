@@ -1,7 +1,7 @@
 type Slug =
   | 'home'
-  | 'projects'
-  | 'blog';
+  | 'research'
+  | 'teaching';
 
 export type Route = {
   path: string,
@@ -15,11 +15,11 @@ export const routes: Routes = {
     path: '/',
     name: 'About',
   },
-  projects: {
+  research: {
     path: '/research',
     name: 'Research',
   },
-  blog: {
+  teaching: {
     path: '/teaching',
     name: 'Teaching',
   },

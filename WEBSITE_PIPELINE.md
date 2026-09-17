@@ -50,11 +50,9 @@ npm run serve
 npm run deploy
 ```
 
-`npm run pipeline` runs the type checker and linter, removes the previous Gatsby cache/output, builds the Gatsby site from the committed data snapshot, and verifies the compiled artifact. It does not publish anything or call the GitHub API for star updates.
+`npm run pipeline` runs the type checker and linter, removes the previous Gatsby cache/output, builds the Gatsby site from the committed source, and verifies the compiled artifact. It does not publish anything or make network requests for content updates.
 
-The website now stores the CV in `static/CV.pdf` and links to `/CV.pdf`. Its favicon is a QP monogram, and the RSS feed identifies Quang-Phuc Phung. The research page links only to the SSRN paper; the unused Dropbox and OneDrive links were removed from the active data file.
-
-`npm run fetch-stars` remains an explicit data-refresh command. It updates the committed star snapshot only when the star counts change. It is not part of the normal build, so the normal build remains network-independent and does not dirty the source checkout.
+The website now stores the CV in `static/CV.pdf` and links to `/CV.pdf`. Its favicon is a QP monogram. The research page links to the SSRN paper. The legacy technical post/project routes, subscription form, and RSS feed were removed; the pre-retirement source was preserved in the private bundle `/Users/luftballon/.hermes/workspace/website-legacy-archive-20260917.bundle`.
 
 `npm run deploy` runs the same checks and build, verifies `public/index.html`, `public/404.html`, `public/CNAME`, `public/CV.pdf`, `public/favicon.ico`, and Gatsby page data, then publishes `public/` to the `public` branch with `gh-pages`. It refuses to run unless:
 
@@ -101,4 +99,4 @@ Cloudflare is the DNS and edge layer. The apex has the four GitHub Pages A recor
 
 ## Current boundary
 
-The pipeline source is now pushed to GitHub `main`, and the verified build is deployed to the GitHub Pages `public` branch. The current deployment commit and the exact remote `index.html`, `CNAME`, and `CV.pdf` blobs were read back after publication. The local CI workflow passed on the pushed source commit. Nothing in the normal build depends on Dropbox.
+The pipeline source is now pushed to GitHub `main`, and the verified build is deployed to the GitHub Pages `public` branch. The current deployment commit and the exact remote `index.html`, `CNAME`, `CV.pdf`, and `favicon.ico` blobs were read back after publication. The local CI workflow passed on the pushed source commit. Nothing in the normal build depends on Dropbox, the legacy post corpus, or the retired RSS/subscription machinery.

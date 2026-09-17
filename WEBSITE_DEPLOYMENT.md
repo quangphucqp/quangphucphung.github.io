@@ -569,7 +569,7 @@ RSS title:         Trekhleb.dev RSS Feed
 
 The package name, author, homepage, and RSS title have since been changed so that the active metadata describes Quang-Phuc Phung's website. The historical values remain here as audit evidence, not as current configuration.
 
-The route structure and content were adapted separately. The remaining legacy project and post material should not be relabeled without checking its authorship and intended status.
+The route structure and content were adapted separately. The legacy technical project and post material has now been retired from the generated site and RSS feed. The pre-cleanup source remains recoverable in the private Git bundle `/Users/luftballon/.hermes/workspace/website-legacy-archive-20260917.bundle`.
 
 ---
 

@@ -3,16 +3,6 @@
 
 @tailwind base;
 
-/*
-Adding base styles
-@see: https://tailwindcss.com/docs/adding-base-styles
-*/
-@layer base {
-  /*.blog-post h1 {*/
-  /*  @apply text-3xl;*/
-  /*}*/
-}
-
 /* Ensure consistent scrollbar behavior across pages */
 html {
   overflow-y: scroll;
@@ -20,5 +10,3 @@ html {
 
 @tailwind components;
 @tailwind utilities;
-
-@import "custom.css";
