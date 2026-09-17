@@ -1,3 +1,4 @@
+// AI-assisted modification by Luftballon, 2026-09-17.
 import React from 'react';
 import PageLayout from '../layouts/PageLayout';
 import PageHeader from '../shared/PageHeader';
@@ -6,34 +7,30 @@ import SEO from '../shared/SEO';
 const TeachingScreen = (): React.ReactElement => {
   return (
     <PageLayout>
-      <SEO title="Teaching" description="Teaching materials and courses" />
+      <SEO title="Teaching" description="Teaching and thesis supervision" />
       <PageHeader>Teaching</PageHeader>
 
       <div className="mt-6">
-        {/* Teaching assistant section */}
-        <div className="mt-6">
-          <h3 className="text-lg font-semibold">Teaching assistant @Tilburg University</h3>
-          <br />
-          <p className="text-md">
-            Economics 2 for IBA <span className="italic">(Spring 2020/2021/2022/2023)</span>. Lecturers:
-            Louis B.D. Raes, Malik Çürük
+        <section>
+          <h3 className="text-lg font-semibold">Teaching Assistant, Tilburg University</h3>
+          <p className="mt-4 text-md">
+            <strong>Economics 2 for International Business Administration</strong>{' '}
+            <span className="italic whitespace-nowrap">(Spring 2020–2023)</span>. Lecturers:{' '}
+            <span className="whitespace-nowrap">Louis B.D. Raes and Malik Çürük.</span>
           </p>
-          <br />
-          <p className="text-md">
-            Method: Experiments and Surveys <span className="italic">(Fall 2019/2020/2021/2022/2023)</span>.
-            Lecturer: Stefan Trautmann
+          <p className="mt-4 text-md">
+            <strong>Methods: Experiments and Surveys</strong>{' '}
+            <span className="italic whitespace-nowrap">(Fall 2019–2023)</span>. Lecturer: Stefan Trautmann.
           </p>
-        </div>
+        </section>
 
-        {/* Supervision section */}
-        <div className="mt-6">
-          <h3 className="text-lg font-semibold">Supervision @Tilburg University</h3>
-          <br />
-          <p className="text-md">
-            Supervised over 30 undergraduate theses in the field of economics and
-            management (2020 - 2023)
+        <section className="mt-8">
+          <h3 className="text-lg font-semibold">Thesis Supervision, Tilburg University</h3>
+          <p className="mt-4 text-md">
+            Supervised more than 30 undergraduate theses in economics and management{' '}
+            <span className="italic whitespace-nowrap">(2020–2024)</span>.
           </p>
-        </div>
+        </section>
       </div>
     </PageLayout>
   );
