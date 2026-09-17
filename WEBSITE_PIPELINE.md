@@ -93,6 +93,12 @@ The lockfile is refreshed with non-breaking updates and installed with `npm ci`.
 
 `.github/workflows/CI.yml` now validates pushes and pull requests to `main` with the pinned `.nvmrc` Node version, `npm ci`, a full dependency audit, type checking, linting, and a production build. The audit blocks high and critical advisories. It does not deploy automatically. Publishing remains an explicit local command so a source edit cannot silently change the public site.
 
+## Hosting state
+
+GitHub Pages serves the `public` branch from its root using the legacy branch-based publisher. Its configured custom domain is `quangphucphung.com`. The source repository now contains the CV at `static/CV.pdf`, and the active site data contains only the local CV link and the SSRN paper link. Dropbox and OneDrive are no longer part of the active website.
+
+Cloudflare is the DNS and edge layer. The apex has the four GitHub Pages A records, and `www` is a CNAME to `quangphucqp.github.io`; all five records are currently proxied. Universal SSL is active and the zone encryption mode is `Full`. No DNS changes were needed for this release. Cloudflare `Always Use HTTPS` and GitHub Pages `https_enforced` are currently off, so HTTPS hardening remains a separate follow-up. The direct GitHub Pages origin certificate did not match the custom domain during inspection, so the zone was not changed to `Full (strict)`.
+
 ## Current boundary
 
-The local pipeline is set up and is intended to reproduce the current site. The source changes that make the pipeline copy match the current live site have not been pushed to GitHub in this setup pass. A later explicit publish can update the deployment branch; a separate explicit source push is needed if the remote `main` branch should become the permanent source of those current content changes.
+The pipeline source is now pushed to GitHub `main`, and the verified build is deployed to the GitHub Pages `public` branch. The current deployment commit and the exact remote `index.html`, `CNAME`, and `CV.pdf` blobs were read back after publication. The local CI workflow passed on the pushed source commit. Nothing in the normal build depends on Dropbox.
