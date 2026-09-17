@@ -52,8 +52,11 @@ const assertSourceCheckout = () => {
   }
 
   const status = runCaptured('git', ['status', '--short']);
+  if (status && deployRequested) {
+    throw new Error('Refusing to deploy with a dirty working tree. Commit or stash source changes first.');
+  }
   if (status) {
-    console.log('Working tree has local changes; the pipeline will use the current files.');
+    console.log('Working tree has local changes; the verification pipeline will use the current files.');
   }
 };
 

@@ -23,10 +23,19 @@ function logInfo(message: any): void {
   console.log(message);
 }
 
-function saveStars(projectStars: GitHubStars, starsPath: string): void {
+function saveStars(projectStars: GitHubStars, starsPath: string): boolean {
   const jsonSpace = 2;
-  const starsData = JSON.stringify(projectStars, null, jsonSpace);
-  fs.writeFileSync(starsPath, starsData);
+  const starsData = `${JSON.stringify(projectStars, null, jsonSpace)}\n`;
+  const currentStarsData = fs.existsSync(starsPath)
+    ? fs.readFileSync(starsPath, 'utf8')
+    : null;
+
+  if (currentStarsData === starsData) {
+    return false;
+  }
+
+  fs.writeFileSync(starsPath, starsData, 'utf8');
+  return true;
 }
 
 type GitHubRateLimits = {
@@ -131,7 +140,6 @@ async function main(): Promise<void> {
       }
       projectStars[projectID] = {
         stars: ghRepo.stargazers_count,
-        updatedAt: new Date().toISOString(),
       };
       logInfo(projectStars[projectID]);
     } catch (err) {
@@ -141,8 +149,8 @@ async function main(): Promise<void> {
 
   try {
     logInfo(`\nTrying to save stars to ${starsJSONPath}`);
-    saveStars(projectStars, starsJSONPath);
-    logInfo('Stars JSON file has been updated');
+    const starsChanged = saveStars(projectStars, starsJSONPath);
+    logInfo(starsChanged ? 'Stars JSON file has been updated' : 'Stars JSON file is unchanged');
   } catch (err) {
     logError(err);
   }

@@ -1,3 +1,4 @@
+> **Historical reference:** This document records the old mixed-source/manual-copy workflow and is retained for provenance. It is not the current operating procedure. Use `WEBSITE_PIPELINE.md` for the current local pipeline.
 > **Prepared by:** Luftballon (AI assistant), at QP's direction.
 > **Date:** 2026-07-12
 
