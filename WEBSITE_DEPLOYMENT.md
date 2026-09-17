@@ -556,9 +556,9 @@ The deployment branch is not protected. `git push --force` can overwrite a remot
 
 This workflow should not be treated as the authoritative deployment process until it has been tested against the current `main` branch and the current GitHub Pages configuration.
 
-### 8.6 The project still contains inherited template metadata
+### 8.6 Inherited template metadata (initial audit finding)
 
-At least some project metadata remains from the original Gatsby/Trekhleb template:
+The initial audit found project metadata from the original Gatsby/Trekhleb template:
 
 ```text
 package name:      trekhleb.github.io
@@ -567,9 +567,9 @@ package homepage:  https://trekhleb.dev
 RSS title:         Trekhleb.dev RSS Feed
 ```
 
-The route structure and content have been adapted, but these metadata fields should eventually be reviewed so that package metadata, SEO, RSS, and site identity consistently describe Quang Phuc Phung's website.
+The package name, author, homepage, and RSS title have since been changed so that the active metadata describes Quang-Phuc Phung's website. The historical values remain here as audit evidence, not as current configuration.
 
-This is separate from the deployment mechanics, but it is easy to mistake it for a deployment problem when it appears in generated metadata.
+The route structure and content were adapted separately. The remaining legacy project and post material should not be relabeled without checking its authorship and intended status.
 
 ---
 

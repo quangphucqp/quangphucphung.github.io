@@ -52,11 +52,11 @@ npm run deploy
 
 `npm run pipeline` runs the type checker and linter, removes the previous Gatsby cache/output, builds the Gatsby site from the committed data snapshot, and verifies the compiled artifact. It does not publish anything or call the GitHub API for star updates.
 
-The website now stores the CV in `static/CV.pdf` and links to `/CV.pdf`. The research page links only to the SSRN paper; the unused Dropbox and OneDrive links were removed from the active data file.
+The website now stores the CV in `static/CV.pdf` and links to `/CV.pdf`. Its favicon is a QP monogram, and the RSS feed identifies Quang-Phuc Phung. The research page links only to the SSRN paper; the unused Dropbox and OneDrive links were removed from the active data file.
 
 `npm run fetch-stars` remains an explicit data-refresh command. It updates the committed star snapshot only when the star counts change. It is not part of the normal build, so the normal build remains network-independent and does not dirty the source checkout.
 
-`npm run deploy` runs the same checks and build, verifies `public/index.html`, `public/404.html`, `public/CNAME`, `public/CV.pdf`, and Gatsby page data, then publishes `public/` to the `public` branch with `gh-pages`. It refuses to run unless:
+`npm run deploy` runs the same checks and build, verifies `public/index.html`, `public/404.html`, `public/CNAME`, `public/CV.pdf`, `public/favicon.ico`, and Gatsby page data, then publishes `public/` to the `public` branch with `gh-pages`. It refuses to run unless:
 
 - the checkout is on `main`;
 - the working tree is clean;
@@ -64,7 +64,7 @@ The website now stores the CV in `static/CV.pdf` and links to `/CV.pdf`. The res
 - the build contains the expected domain and HTML files;
 - the output does not contain an accidental nested `public/public/` directory.
 
-After publishing, the script reads the remote `public` branch and GitHub Pages configuration back through `gh`, checks that Pages still serves `public:/` with `quangphucphung.com`, and verifies the remote `index.html`, `CNAME`, and `CV.pdf` blobs against the local build.
+After publishing, the script reads the remote `public` branch and GitHub Pages configuration back through `gh`, checks that Pages still serves `public:/` with `quangphucphung.com`, and verifies the remote `index.html`, `CNAME`, `CV.pdf`, and `favicon.ico` blobs against the local build.
 
 ## Deployment topology
 

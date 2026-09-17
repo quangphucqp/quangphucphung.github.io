@@ -70,7 +70,7 @@ type GitHubProject = {
 };
 
 // @see: https://api.github.com/
-// @see: https://api.github.com/repos/trekhleb/nano-neuron
+// @see: https://api.github.com/repos/{owner}/{repo}
 async function fetchGitHubProject(project: Project): Promise<GitHubProject> {
   return new Promise((resolve, reject) => {
     const owner = project?.gitHubRepo?.owner;
